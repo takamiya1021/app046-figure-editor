@@ -54,10 +54,10 @@
   ```
 
 #### 0.3 サンプルテスト作成（0.5h）
-- [ ] サンプルコンポーネント作成（`components/UI/Button.tsx`）
-- [ ] サンプルテスト作成（`components/UI/Button.test.tsx`）
-- [ ] テスト実行確認（`npm test`）
-- [ ] カバレッジレポート確認（`npm run test:coverage`）
+- [x] サンプルコンポーネント作成（`components/UI/Button.tsx`）
+- [x] サンプルテスト作成（`components/UI/Button.test.tsx`）
+- [x] テスト実行確認（`npm test`）
+- [x] カバレッジレポート確認（`npm run test:coverage`）
 
 ---
 
