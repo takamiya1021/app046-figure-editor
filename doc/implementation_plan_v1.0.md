@@ -29,22 +29,22 @@
 ### タスクリスト
 
 #### 0.1 Next.js プロジェクトセットアップ（1h）
-- [ ] Next.js 14プロジェクト作成
+- [x] Next.js 14プロジェクト作成
   ```bash
   npx create-next-app@latest app046-figure-editor --typescript --tailwind --app
   ```
-- [ ] 不要ファイル削除
-- [ ] ディレクトリ構造作成（components/, lib/, hooks/, context/）
-- [ ] Git初期化・初回コミット
+- [x] 不要ファイル削除
+- [x] ディレクトリ構造作成（components/, lib/, hooks/, context/）
+- [x] Git初期化・初回コミット
 
 #### 0.2 Jest + React Testing Library セットアップ（1.5h）
-- [ ] 依存関係インストール
+- [x] 依存関係インストール
   ```bash
   npm install -D jest @testing-library/react @testing-library/jest-dom @testing-library/user-event jest-environment-jsdom
   ```
-- [ ] Jest設定ファイル作成（`jest.config.js`）
-- [ ] テストセットアップファイル作成（`jest.setup.js`）
-- [ ] package.jsonにテストスクリプト追加
+- [x] Jest設定ファイル作成（`jest.config.js`）
+- [x] テストセットアップファイル作成（`jest.setup.js`）
+- [x] package.jsonにテストスクリプト追加
   ```json
   "scripts": {
     "test": "jest",
