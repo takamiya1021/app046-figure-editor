@@ -116,15 +116,15 @@
 - [x] **Refactor**: Context分割（必要に応じて）
 
 #### 1.2.2 Reducer実装（Red → Green → Refactor）（2h）
-- [ ] **Red**: Reducerテスト作成（各アクションごと）
-- [ ] **Green**: Reducer実装
+- [x] **Red**: Reducerテスト作成（各アクションごと）
+- [x] **Green**: Reducer実装
   - ADD_TAB, REMOVE_TAB
   - SET_ACTIVE_TAB
   - UPDATE_TAB_IMAGES
   - UPDATE_TAB_OPTIONS
   - ADD_GENERATED_IMAGES
   - START_GENERATION, END_GENERATION
-- [ ] **Refactor**: Reducer関数の分割
+- [x] **Refactor**: Reducer関数の分割
 
 #### 1.2.3 カスタムフック - useTabManager（Red → Green → Refactor）（1h）
 - [ ] **Red**: useTabManagerテスト作成（`hooks/useTabManager.test.ts`）
