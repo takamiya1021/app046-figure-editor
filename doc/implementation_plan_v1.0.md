@@ -70,10 +70,10 @@
 ### 1.1 プロジェクト基盤（4h）
 
 #### 1.1.1 型定義作成（Red → Green → Refactor）（1h）
-- [ ] **Red**: 型定義のテスト作成（`lib/types.test.ts`）
-- [ ] **Green**: 基本型定義実装（`lib/types.ts`）
+- [x] **Red**: 型定義のテスト作成（`lib/types.test.ts`）
+- [x] **Green**: 基本型定義実装（`lib/types.ts`）
   - GenerationStyle, AspectRatio, Tab, GeneratedImage等
-- [ ] **Refactor**: 型の整理・ドキュメント追加
+- [x] **Refactor**: 型の整理・ドキュメント追加
 
 #### 1.1.2 定数定義（Red → Green → Refactor）（0.5h）
 - [ ] **Red**: 定数テスト作成（`lib/constants.test.ts`）
