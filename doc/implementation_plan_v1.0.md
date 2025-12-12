@@ -82,11 +82,11 @@
 - [x] **Refactor**: 定数のグルーピング
 
 #### 1.1.3 ユーティリティ関数（Red → Green → Refactor）（1h）
-- [ ] **Red**: ユーティリティテスト作成（`lib/utils.test.ts`）
-- [ ] **Green**: 基本ユーティリティ実装（`lib/utils.ts`）
+- [x] **Red**: ユーティリティテスト作成（`lib/utils.test.ts`）
+- [x] **Green**: 基本ユーティリティ実装（`lib/utils.ts`）
   - clsx/tailwind-merge統合
   - Base64変換関数
-- [ ] **Refactor**: 関数の最適化
+- [x] **Refactor**: 関数の最適化
 
 #### 1.1.4 グローバルスタイル設定（0.5h）
 - [ ] Tailwind設定（`tailwind.config.ts`）
