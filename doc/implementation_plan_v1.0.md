@@ -97,11 +97,11 @@
   - カスタムスタイル
 
 #### 1.1.5 Layout設定（Red → Green → Refactor）（1h）
-- [ ] **Red**: Layoutテスト作成（`app/layout.test.tsx`）
-- [ ] **Green**: Root Layout実装（`app/layout.tsx`）
+- [x] **Red**: Layoutテスト作成（`app/layout.test.tsx`）
+- [x] **Green**: Root Layout実装（`app/layout.tsx`）
   - メタデータ設定
   - フォント読み込み
-- [ ] **Refactor**: SEO最適化
+- [x] **Refactor**: SEO最適化
 
 ---
 
