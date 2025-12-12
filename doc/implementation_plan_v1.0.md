@@ -76,10 +76,10 @@
 - [x] **Refactor**: 型の整理・ドキュメント追加
 
 #### 1.1.2 定数定義（Red → Green → Refactor）（0.5h）
-- [ ] **Red**: 定数テスト作成（`lib/constants.test.ts`）
-- [ ] **Green**: 定数実装（`lib/constants.ts`）
+- [x] **Red**: 定数テスト作成（`lib/constants.test.ts`）
+- [x] **Green**: 定数実装（`lib/constants.ts`）
   - DEFAULT_TAB, INITIAL_APP_STATE等
-- [ ] **Refactor**: 定数のグルーピング
+- [x] **Refactor**: 定数のグルーピング
 
 #### 1.1.3 ユーティリティ関数（Red → Green → Refactor）（1h）
 - [ ] **Red**: ユーティリティテスト作成（`lib/utils.test.ts`）
