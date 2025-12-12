@@ -89,10 +89,10 @@
 - [x] **Refactor**: 関数の最適化
 
 #### 1.1.4 グローバルスタイル設定（0.5h）
-- [ ] Tailwind設定（`tailwind.config.ts`）
+- [x] Tailwind設定（`tailwind.config.ts`）
   - カラーパレット定義
   - カスタムスペーシング
-- [ ] グローバルCSS（`app/globals.css`）
+- [x] グローバルCSS（`app/globals.css`）
   - リセットCSS
   - カスタムスタイル
 
