@@ -108,12 +108,12 @@
 ### 1.2 状態管理基盤（5h）
 
 #### 1.2.1 AppContext作成（Red → Green → Refactor）（2h）
-- [ ] **Red**: AppContextテスト作成（`context/AppContext.test.tsx`）
-- [ ] **Green**: Context実装（`context/AppContext.tsx`）
+- [x] **Red**: AppContextテスト作成（`context/AppContext.test.tsx`）
+- [x] **Green**: Context実装（`context/AppContext.tsx`）
   - createContext, Provider
   - useReducer統合
   - AppAction型定義
-- [ ] **Refactor**: Context分割（必要に応じて）
+- [x] **Refactor**: Context分割（必要に応じて）
 
 #### 1.2.2 Reducer実装（Red → Green → Refactor）（2h）
 - [ ] **Red**: Reducerテスト作成（各アクションごと）
