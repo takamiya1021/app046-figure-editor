@@ -1,0 +1,25 @@
+{
+  "active": true,
+  "spec": "013-configure-pwa-settings-and-create-icons",
+  "state": "building",
+  "subtasks": {
+    "completed": 0,
+    "total": 1,
+    "in_progress": 1,
+    "failed": 0
+  },
+  "phase": {
+    "current": "Complete PWA Setup",
+    "id": 1,
+    "total": 1
+  },
+  "workers": {
+    "active": 0,
+    "max": 1
+  },
+  "session": {
+    "number": 1,
+    "started_at": "2026-01-12T22:36:20.276505"
+  },
+  "last_update": "2026-01-12T22:36:20.331200"
+}
