@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1"/>
+      <stop offset="100%" style="stop-color:#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="figure" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fbbf24"/>
+      <stop offset="100%" style="stop-color:#f59e0b"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="512" height="512" rx="96" fill="url(#bg)"/>
+  <!-- Base/Pedestal -->
+  <ellipse cx="256" cy="420" rx="120" ry="30" fill="#1e1b4b" opacity="0.6"/>
+  <ellipse cx="256" cy="400" rx="100" ry="20" fill="#312e81"/>
+  <!-- Figure body -->
+  <path d="M256 120 C200 120 180 180 180 240 L180 320 C180 360 210 380 256 380 C302 380 332 360 332 320 L332 240 C332 180 312 120 256 120Z" fill="url(#figure)"/>
+  <!-- Figure head -->
+  <circle cx="256" cy="100" r="50" fill="url(#figure)"/>
+  <!-- Shine effect -->
+  <ellipse cx="236" cy="85" rx="15" ry="10" fill="white" opacity="0.4"/>
+  <ellipse cx="236" cy="200" rx="20" ry="30" fill="white" opacity="0.2"/>
+  <!-- Arms -->
+  <path d="M180 220 L130 280 L140 290 L185 235" fill="url(#figure)"/>
+  <path d="M332 220 L382 280 L372 290 L327 235" fill="url(#figure)"/>
+</svg>

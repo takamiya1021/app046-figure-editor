@@ -42,7 +42,7 @@
 @layer base {
   /* リセットCSS */
   * {
-    @apply border-border;
+    @apply border-secondary-200;
   }
 
   body {
