@@ -105,6 +105,36 @@ describe('APIKeyModal', () => {
 
       expect(screen.getByText(/APIキーを入力してください/i)).toBeInTheDocument();
     });
+
+    it('10文字未満のAPIキーでは保存できない', async () => {
+      const user = userEvent.setup();
+      const handleSave = jest.fn();
+      render(<APIKeyModal {...defaultProps} onSave={handleSave} />);
+
+      const input = screen.getByLabelText(/APIキー/i);
+      await user.type(input, 'short');
+
+      const saveButton = screen.getByRole('button', { name: /保存/i });
+      await user.click(saveButton);
+
+      expect(handleSave).not.toHaveBeenCalled();
+      expect(screen.getByText(/APIキーは10文字以上である必要があります/i)).toBeInTheDocument();
+    });
+
+    it('入力後にエラーがクリアされる', async () => {
+      const user = userEvent.setup();
+      render(<APIKeyModal {...defaultProps} />);
+
+      const saveButton = screen.getByRole('button', { name: /保存/i });
+      await user.click(saveButton);
+
+      expect(screen.getByText(/APIキーを入力してください/i)).toBeInTheDocument();
+
+      const input = screen.getByLabelText(/APIキー/i);
+      await user.type(input, 'a');
+
+      expect(screen.queryByText(/APIキーを入力してください/i)).not.toBeInTheDocument();
+    });
   });
 
   describe('削除ボタン', () => {

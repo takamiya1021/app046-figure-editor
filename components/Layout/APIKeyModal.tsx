@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import Button from '../UI/Button';
 
 interface APIKeyModalProps {
   isOpen: boolean;
@@ -8,6 +9,21 @@ interface APIKeyModalProps {
   onSave: (apiKey: string) => void;
   onDelete: () => void;
   initialValue?: string;
+}
+
+// Validation function for API key input
+function validateAPIKey(value: string): string | null {
+  const trimmedValue = value.trim();
+
+  if (!trimmedValue) {
+    return 'APIキーを入力してください';
+  }
+
+  if (trimmedValue.length < 10) {
+    return 'APIキーは10文字以上である必要があります';
+  }
+
+  return null;
 }
 
 export default function APIKeyModal({
@@ -38,13 +54,13 @@ export default function APIKeyModal({
   }, [isOpen, onClose]);
 
   const handleSave = useCallback(() => {
-    const trimmedValue = inputValue.trim();
-    if (!trimmedValue) {
-      setError('APIキーを入力してください');
+    const validationError = validateAPIKey(inputValue);
+    if (validationError) {
+      setError(validationError);
       return;
     }
     setError(null);
-    onSave(trimmedValue);
+    onSave(inputValue.trim());
   }, [inputValue, onSave]);
 
   if (!isOpen) {
@@ -85,24 +101,15 @@ export default function APIKeyModal({
         </div>
 
         <div className="flex justify-end space-x-2">
-          <button
-            onClick={onDelete}
-            className="px-4 py-2 rounded font-medium transition-colors bg-red-600 hover:bg-red-700 text-white"
-          >
+          <Button variant="danger" onClick={onDelete}>
             削除
-          </button>
-          <button
-            onClick={onClose}
-            className="px-4 py-2 rounded font-medium transition-colors bg-gray-200 hover:bg-gray-300 text-gray-800"
-          >
+          </Button>
+          <Button variant="secondary" onClick={onClose}>
             閉じる
-          </button>
-          <button
-            onClick={handleSave}
-            className="px-4 py-2 rounded font-medium transition-colors bg-blue-600 hover:bg-blue-700 text-white"
-          >
+          </Button>
+          <Button variant="primary" onClick={handleSave}>
             保存
-          </button>
+          </Button>
         </div>
       </div>
     </div>
