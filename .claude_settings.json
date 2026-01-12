@@ -1,0 +1,39 @@
+{
+  "sandbox": {
+    "enabled": true,
+    "autoAllowBashIfSandboxed": true
+  },
+  "permissions": {
+    "defaultMode": "acceptEdits",
+    "allow": [
+      "Read(./**)",
+      "Write(./**)",
+      "Edit(./**)",
+      "Glob(./**)",
+      "Grep(./**)",
+      "Read(/home/ustar-wsl-2-2/projects/100apps/app046-figure-editor/.auto-claude/worktrees/tasks/013-configure-pwa-settings-and-create-icons/**)",
+      "Write(/home/ustar-wsl-2-2/projects/100apps/app046-figure-editor/.auto-claude/worktrees/tasks/013-configure-pwa-settings-and-create-icons/**)",
+      "Edit(/home/ustar-wsl-2-2/projects/100apps/app046-figure-editor/.auto-claude/worktrees/tasks/013-configure-pwa-settings-and-create-icons/**)",
+      "Glob(/home/ustar-wsl-2-2/projects/100apps/app046-figure-editor/.auto-claude/worktrees/tasks/013-configure-pwa-settings-and-create-icons/**)",
+      "Grep(/home/ustar-wsl-2-2/projects/100apps/app046-figure-editor/.auto-claude/worktrees/tasks/013-configure-pwa-settings-and-create-icons/**)",
+      "Read(/home/ustar-wsl-2-2/projects/100apps/app046-figure-editor/.auto-claude/worktrees/tasks/013-configure-pwa-settings-and-create-icons/.auto-claude/specs/013-configure-pwa-settings-and-create-icons/**)",
+      "Write(/home/ustar-wsl-2-2/projects/100apps/app046-figure-editor/.auto-claude/worktrees/tasks/013-configure-pwa-settings-and-create-icons/.auto-claude/specs/013-configure-pwa-settings-and-create-icons/**)",
+      "Edit(/home/ustar-wsl-2-2/projects/100apps/app046-figure-editor/.auto-claude/worktrees/tasks/013-configure-pwa-settings-and-create-icons/.auto-claude/specs/013-configure-pwa-settings-and-create-icons/**)",
+      "Read(/home/ustar-wsl-2-2/projects/100apps/app046-figure-editor/.auto-claude/**)",
+      "Write(/home/ustar-wsl-2-2/projects/100apps/app046-figure-editor/.auto-claude/**)",
+      "Edit(/home/ustar-wsl-2-2/projects/100apps/app046-figure-editor/.auto-claude/**)",
+      "Glob(/home/ustar-wsl-2-2/projects/100apps/app046-figure-editor/.auto-claude/**)",
+      "Grep(/home/ustar-wsl-2-2/projects/100apps/app046-figure-editor/.auto-claude/**)",
+      "Bash(*)",
+      "WebFetch(*)",
+      "WebSearch(*)",
+      "mcp__context7__resolve-library-id(*)",
+      "mcp__context7__get-library-docs(*)",
+      "mcp__graphiti-memory__search_nodes(*)",
+      "mcp__graphiti-memory__search_facts(*)",
+      "mcp__graphiti-memory__add_episode(*)",
+      "mcp__graphiti-memory__get_episodes(*)",
+      "mcp__graphiti-memory__get_entity_edge(*)"
+    ]
+  }
+}
