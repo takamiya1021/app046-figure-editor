@@ -1,0 +1,25 @@
+{
+  "active": true,
+  "spec": "003-implement-api-key-management-with-storage-and-moda",
+  "state": "building",
+  "subtasks": {
+    "completed": 2,
+    "total": 10,
+    "in_progress": 1,
+    "failed": 0
+  },
+  "phase": {
+    "current": "Storage Layer (TDD)",
+    "id": null,
+    "total": 3
+  },
+  "workers": {
+    "active": 0,
+    "max": 1
+  },
+  "session": {
+    "number": 3,
+    "started_at": "2026-01-12T22:40:22.332591"
+  },
+  "last_update": "2026-01-12T22:42:40.890227"
+}

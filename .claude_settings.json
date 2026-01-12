@@ -1,0 +1,39 @@
+{
+  "sandbox": {
+    "enabled": true,
+    "autoAllowBashIfSandboxed": true
+  },
+  "permissions": {
+    "defaultMode": "acceptEdits",
+    "allow": [
+      "Read(./**)",
+      "Write(./**)",
+      "Edit(./**)",
+      "Glob(./**)",
+      "Grep(./**)",
+      "Read(/home/ustar-wsl-2-2/projects/100apps/app046-figure-editor/.auto-claude/worktrees/tasks/003-implement-api-key-management-with-storage-and-moda/**)",
+      "Write(/home/ustar-wsl-2-2/projects/100apps/app046-figure-editor/.auto-claude/worktrees/tasks/003-implement-api-key-management-with-storage-and-moda/**)",
+      "Edit(/home/ustar-wsl-2-2/projects/100apps/app046-figure-editor/.auto-claude/worktrees/tasks/003-implement-api-key-management-with-storage-and-moda/**)",
+      "Glob(/home/ustar-wsl-2-2/projects/100apps/app046-figure-editor/.auto-claude/worktrees/tasks/003-implement-api-key-management-with-storage-and-moda/**)",
+      "Grep(/home/ustar-wsl-2-2/projects/100apps/app046-figure-editor/.auto-claude/worktrees/tasks/003-implement-api-key-management-with-storage-and-moda/**)",
+      "Read(/home/ustar-wsl-2-2/projects/100apps/app046-figure-editor/.auto-claude/worktrees/tasks/003-implement-api-key-management-with-storage-and-moda/.auto-claude/specs/003-implement-api-key-management-with-storage-and-moda/**)",
+      "Write(/home/ustar-wsl-2-2/projects/100apps/app046-figure-editor/.auto-claude/worktrees/tasks/003-implement-api-key-management-with-storage-and-moda/.auto-claude/specs/003-implement-api-key-management-with-storage-and-moda/**)",
+      "Edit(/home/ustar-wsl-2-2/projects/100apps/app046-figure-editor/.auto-claude/worktrees/tasks/003-implement-api-key-management-with-storage-and-moda/.auto-claude/specs/003-implement-api-key-management-with-storage-and-moda/**)",
+      "Read(/home/ustar-wsl-2-2/projects/100apps/app046-figure-editor/.auto-claude/**)",
+      "Write(/home/ustar-wsl-2-2/projects/100apps/app046-figure-editor/.auto-claude/**)",
+      "Edit(/home/ustar-wsl-2-2/projects/100apps/app046-figure-editor/.auto-claude/**)",
+      "Glob(/home/ustar-wsl-2-2/projects/100apps/app046-figure-editor/.auto-claude/**)",
+      "Grep(/home/ustar-wsl-2-2/projects/100apps/app046-figure-editor/.auto-claude/**)",
+      "Bash(*)",
+      "WebFetch(*)",
+      "WebSearch(*)",
+      "mcp__context7__resolve-library-id(*)",
+      "mcp__context7__get-library-docs(*)",
+      "mcp__graphiti-memory__search_nodes(*)",
+      "mcp__graphiti-memory__search_facts(*)",
+      "mcp__graphiti-memory__add_episode(*)",
+      "mcp__graphiti-memory__get_episodes(*)",
+      "mcp__graphiti-memory__get_entity_edge(*)"
+    ]
+  }
+}
