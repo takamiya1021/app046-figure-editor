@@ -98,6 +98,26 @@ export interface BackgroundOptions {
   customDescription?: string;
 }
 
+// 三面図オプション
+export interface ThreeViewOptions {
+  /** フィギュア風の質感で生成するか */
+  figurize: boolean;
+}
+
+// アクリルスタンドオプション
+export interface AcrylicStandOptions {
+  /** 白い縁取りを追加するか */
+  hasOutline: boolean;
+}
+
+// 線画オプション
+export type LineThickness = 'thin' | 'medium' | 'thick';
+
+export interface LineArtOptions {
+  /** 線の太さ */
+  thickness: LineThickness;
+}
+
 // アップロードされた画像
 export interface UploadedImage {
   id: string;
@@ -108,9 +128,10 @@ export interface UploadedImage {
 // 生成された画像
 export interface GeneratedImage {
   id: string;
-  url: string; // Base64 data URL
-  timestamp: number;
+  base64: string; // Base64 data URL
+  createdAt: string; // ISO 8601形式の日時文字列
   isDownloaded: boolean;
+  isSelected: boolean;
 }
 
 // タブ
@@ -124,6 +145,9 @@ export interface Tab {
   packageOptions?: PackageOptions;
   displayStandOptions?: DisplayStandOptions;
   backgroundOptions?: BackgroundOptions;
+  threeViewOptions?: ThreeViewOptions;
+  acrylicStandOptions?: AcrylicStandOptions;
+  lineArtOptions?: LineArtOptions;
   customPrompt?: string; // 自由生成用
   generatedImages: GeneratedImage[];
   isGenerating: boolean;
@@ -151,6 +175,9 @@ export type AppAction =
         packageOptions?: PackageOptions;
         displayStandOptions?: DisplayStandOptions;
         backgroundOptions?: BackgroundOptions;
+        threeViewOptions?: ThreeViewOptions;
+        acrylicStandOptions?: AcrylicStandOptions;
+        lineArtOptions?: LineArtOptions;
         customPrompt?: string;
       };
     }
