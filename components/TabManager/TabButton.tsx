@@ -1,25 +1,28 @@
+/**
+ * タブボタンコンポーネント
+ */
+
+'use client';
+
 import { MouseEvent, KeyboardEvent } from 'react';
 
 interface TabButtonProps {
   id: string;
-  label: string;
+  name: string;
   isActive: boolean;
   onClick: (id: string) => void;
-  onClose: (id: string) => void;
+  onDelete: (id: string) => void;
+  canDelete: boolean;
 }
 
 export default function TabButton({
   id,
-  label,
+  name,
   isActive,
   onClick,
-  onClose,
+  onDelete,
+  canDelete,
 }: TabButtonProps) {
-  const baseStyles = 'px-4 py-2 border border-gray-300 rounded-t flex items-center gap-2 transition-colors cursor-pointer';
-
-  const activeStyles = 'bg-white border-b-white';
-  const inactiveStyles = 'bg-gray-100 hover:bg-gray-200';
-
   const handleClick = () => {
     onClick(id);
   };
@@ -31,28 +34,44 @@ export default function TabButton({
     }
   };
 
-  const handleClose = (e: MouseEvent<HTMLButtonElement>) => {
+  const handleDelete = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    onClose(id);
+    onDelete(id);
   };
 
   return (
     <div
-      role="button"
+      role="tab"
       tabIndex={0}
-      className={`${baseStyles} ${isActive ? activeStyles : inactiveStyles}`}
+      className={`
+        px-4 py-2 rounded-t-lg border-t border-l border-r
+        flex items-center gap-2 cursor-pointer
+        transition-colors duration-200
+        ${isActive
+          ? 'bg-white border-gray-300 text-gray-900 -mb-px'
+          : 'bg-gray-100 border-gray-200 text-gray-600 hover:bg-gray-200'
+        }
+      `}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
-      aria-label={label}
+      aria-selected={isActive}
+      aria-label={name}
     >
-      <span>{label}</span>
-      <button
-        className="ml-1 text-gray-500 hover:text-gray-700 p-1 rounded hover:bg-gray-300"
-        onClick={handleClose}
-        aria-label="閉じる"
-      >
-        ×
-      </button>
+      <span>{name}</span>
+      {canDelete && (
+        <button
+          type="button"
+          className="
+            ml-1 p-1 rounded text-gray-400
+            hover:text-gray-700 hover:bg-gray-200
+            transition-colors duration-150
+          "
+          onClick={handleDelete}
+          aria-label={`${name}を削除`}
+        >
+          ×
+        </button>
+      )}
     </div>
   );
 }

@@ -15,7 +15,20 @@ import { StyleSelector } from '@/components/StyleSelector';
 import { GenerationControl } from '@/components/GenerationControl';
 import { ResultGallery } from '@/components/ResultGallery';
 import { DownloadManager } from '@/components/DownloadManager';
-import type { GenerationStyle } from '@/lib/types';
+import {
+  ThreeViewOptions,
+  AcrylicStandOptions,
+  LineArtOptions,
+  FreeStyleOptions,
+} from '@/components/StyleOptions';
+import { ProgressMessage, CelebrationMessage } from '@/components/UX';
+import type {
+  GenerationStyle,
+  ThreeViewOptions as ThreeViewOptionsType,
+  AcrylicStandOptions as AcrylicStandOptionsType,
+  LineArtOptions as LineArtOptionsType,
+  LineThickness,
+} from '@/lib/types';
 import type { UploadedImage } from '@/hooks/useImageUpload';
 
 export default function Home() {
@@ -29,6 +42,23 @@ export default function Home() {
   // スタイル選択
   const [selectedStyle, setSelectedStyle] = useState<GenerationStyle>('figure');
   const [customPrompt, setCustomPrompt] = useState('');
+  const [translatedPrompt, setTranslatedPrompt] = useState('');
+  const [isTranslating, setIsTranslating] = useState(false);
+
+  // スタイルオプション
+  const [threeViewOptions, setThreeViewOptions] = useState<ThreeViewOptionsType>({
+    figurize: false,
+  });
+  const [acrylicStandOptions, setAcrylicStandOptions] = useState<AcrylicStandOptionsType>({
+    hasOutline: true,
+  });
+  const [lineArtOptions, setLineArtOptions] = useState<LineArtOptionsType>({
+    thickness: 'medium',
+  });
+
+  // UX状態
+  const [showCelebration, setShowCelebration] = useState(false);
+  const [celebrationMessage, setCelebrationMessage] = useState('');
 
   // 画像生成
   const {
@@ -45,6 +75,29 @@ export default function Home() {
   // ダウンロード
   const { isDownloading, downloadSelected, downloadAll } = useDownload();
 
+  // 翻訳ハンドラ
+  const handleTranslate = useCallback(async () => {
+    if (!apiKey || !customPrompt.trim()) return;
+
+    setIsTranslating(true);
+    try {
+      const response = await fetch('/api/translate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: customPrompt, apiKey }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setTranslatedPrompt(data.translatedText);
+      }
+    } catch (error) {
+      console.error('Translation error:', error);
+    } finally {
+      setIsTranslating(false);
+    }
+  }, [apiKey, customPrompt]);
+
   // 生成ハンドラ
   const handleGenerate = useCallback(
     async (count: number) => {
@@ -52,6 +105,13 @@ export default function Home() {
         setIsAPIKeyModalOpen(true);
         return;
       }
+
+      // スタイルに応じたオプションを含める
+      const styleOptions = {
+        threeViewOptions: selectedStyle === 'three-view' ? threeViewOptions : undefined,
+        acrylicStandOptions: selectedStyle === 'acrylic-stand' ? acrylicStandOptions : undefined,
+        lineArtOptions: selectedStyle === 'line-art' ? lineArtOptions : undefined,
+      };
 
       await generateImages({
         apiKey,
@@ -61,10 +121,15 @@ export default function Home() {
         })),
         style: selectedStyle,
         count,
-        customPrompt: selectedStyle === 'free' ? customPrompt : undefined,
+        customPrompt: selectedStyle === 'free' ? (translatedPrompt || customPrompt) : undefined,
+        ...styleOptions,
       });
+
+      // 生成完了時の祝福メッセージ
+      setCelebrationMessage('生成完了！');
+      setShowCelebration(true);
     },
-    [apiKey, uploadedImages, selectedStyle, customPrompt, generateImages]
+    [apiKey, uploadedImages, selectedStyle, customPrompt, translatedPrompt, generateImages, threeViewOptions, acrylicStandOptions, lineArtOptions]
   );
 
   // ダウンロードハンドラ
@@ -78,6 +143,9 @@ export default function Home() {
       }
       if (downloadedIds.length > 0) {
         markAsDownloaded(downloadedIds);
+        // ダウンロード完了の祝福メッセージ
+        setCelebrationMessage(`${downloadedIds.length}枚ダウンロード完了！`);
+        setShowCelebration(true);
       }
     },
     [generatedImages, downloadSelected, downloadAll, markAsDownloaded]
@@ -155,24 +223,51 @@ export default function Home() {
                 selectedStyle={selectedStyle}
                 onStyleChange={setSelectedStyle}
               />
-              {selectedStyle === 'free' && (
-                <div className="mt-4">
-                  <label
-                    htmlFor="custom-prompt"
-                    className="block text-sm font-medium text-gray-700 mb-2"
-                  >
-                    カスタムプロンプト
-                  </label>
-                  <textarea
-                    id="custom-prompt"
-                    value={customPrompt}
-                    onChange={(e) => setCustomPrompt(e.target.value)}
-                    placeholder="画像の変換方法を自由に記述してください..."
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    rows={3}
+
+              {/* スタイルオプション */}
+              <div className="mt-4">
+                {selectedStyle === 'three-view' && (
+                  <ThreeViewOptions
+                    figurize={threeViewOptions.figurize}
+                    onFigurizeChange={(figurize) =>
+                      setThreeViewOptions({ ...threeViewOptions, figurize })
+                    }
+                    disabled={isGenerating}
                   />
-                </div>
-              )}
+                )}
+
+                {selectedStyle === 'acrylic-stand' && (
+                  <AcrylicStandOptions
+                    hasOutline={acrylicStandOptions.hasOutline}
+                    onOutlineChange={(hasOutline) =>
+                      setAcrylicStandOptions({ ...acrylicStandOptions, hasOutline })
+                    }
+                    disabled={isGenerating}
+                  />
+                )}
+
+                {selectedStyle === 'line-art' && (
+                  <LineArtOptions
+                    thickness={lineArtOptions.thickness}
+                    onThicknessChange={(thickness: LineThickness) =>
+                      setLineArtOptions({ ...lineArtOptions, thickness })
+                    }
+                    disabled={isGenerating}
+                  />
+                )}
+
+                {selectedStyle === 'free' && (
+                  <FreeStyleOptions
+                    prompt={customPrompt}
+                    onPromptChange={setCustomPrompt}
+                    translatedPrompt={translatedPrompt}
+                    onTranslatedPromptChange={setTranslatedPrompt}
+                    onTranslate={handleTranslate}
+                    isTranslating={isTranslating}
+                    disabled={isGenerating}
+                  />
+                )}
+              </div>
             </section>
 
             {/* 生成コントロール */}
@@ -183,6 +278,12 @@ export default function Home() {
                 progress={progress}
                 disabled={!canGenerate}
               />
+
+              {/* 労働の錯覚：進捗メッセージ */}
+              <div className="mt-4">
+                <ProgressMessage isActive={isGenerating} />
+              </div>
+
               {generationError && (
                 <p className="mt-2 text-sm text-red-600">{generationError}</p>
               )}
@@ -236,6 +337,16 @@ export default function Home() {
         onSave={saveApiKey}
         onRemove={removeApiKey}
       />
+
+      {/* ピーク・エンド体験：祝福メッセージ */}
+      <div className="fixed bottom-4 right-4 z-50">
+        <CelebrationMessage
+          isVisible={showCelebration}
+          message={celebrationMessage}
+          type={celebrationMessage.includes('ダウンロード') ? 'download' : 'success'}
+          onDismiss={() => setShowCelebration(false)}
+        />
+      </div>
     </main>
   );
 }
